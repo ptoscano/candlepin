@@ -255,14 +255,14 @@ public class EntitlementResource implements EntitlementsApi {
     }
 
     @Override
-    public void unbind(String dbid) {
-        Entitlement toDelete = entitlementCurator.get(dbid);
+    public void unbind(String entitlement_id) {
+        Entitlement toDelete = entitlementCurator.get(entitlement_id);
         if (toDelete != null) {
             poolManager.revokeEntitlement(toDelete);
             return;
         }
         throw new NotFoundException(
-            i18n.tr("Entitlement with ID \"{0}\" could not be found.", dbid));
+            i18n.tr("Entitlement with ID \"{0}\" could not be found.", entitlement_id));
     }
 
     @Override

@@ -3444,6 +3444,33 @@ paths:
         default:
           $ref: '#/components/responses/default'
 
+    delete:
+      description: Deletes an Entitlement
+      operationId: unbind
+      tags:
+        - entitlements
+      parameters:
+        - name: entitlement_id
+          in: path
+          required: true
+          schema:
+            type: string
+      security: []
+      responses:
+        204:
+          description: Entitlement successfuly deleted
+        404:
+          description: Entitlement could not be found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExceptionMessage'
+              example:
+                displayMessage: Entitlement with ID "test_uuid" could not be found.
+                requestUuid: c4347004-8792-41fe-a4d8-fccaa0d3898a
+        default:
+          $ref: '#/components/responses/default'
+
   /entitlements/{dbid}/upstream_cert:
     get:
       description: Retrieves a Subscription Certificate
@@ -3468,34 +3495,6 @@ paths:
           description: |
             Entitlement could not be found.
             Unable to find upstream certificate for entitlement.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ExceptionMessage'
-              example:
-                displayMessage: Entitlement with ID "test_uuid" could not be found.
-                requestUuid: c4347004-8792-41fe-a4d8-fccaa0d3898a
-        default:
-          $ref: '#/components/responses/default'
-
-  /entitlements/{dbid}:
-    delete:
-      description: Deletes an Entitlement
-      operationId: unbind
-      tags:
-        - entitlements
-      parameters:
-        - name: dbid
-          in: path
-          required: true
-          schema:
-            type: string
-      security: []
-      responses:
-        204:
-          description: Entitlement successfuly deleted
-        404:
-          description: Entitlement could not be found.
           content:
             application/json:
               schema:
