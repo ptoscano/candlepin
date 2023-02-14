@@ -5336,13 +5336,13 @@ paths:
             type: string
             default: DEBUG
             enum:
-              - ALL
-              - TRACE
-              - DEBUG
-              - INFO
-              - WARN
-              - ERROR
-              - OFF
+              - 'ALL'
+              - 'TRACE'
+              - 'DEBUG'
+              - 'INFO'
+              - 'WARN'
+              - 'ERROR'
+              - 'OFF'
       responses:
         200:
           description: Log level successfully set
@@ -6325,7 +6325,7 @@ paths:
           description: exempt
           schema:
             type: string
-            default: false
+            default: 'false'
       responses:
         200:
           description:  A list of support levels for an owner
